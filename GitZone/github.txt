@@ -15,18 +15,62 @@ cd test
 git config --global --edit
 mkdir and go into it
 copy file here what you want to upload
-git add .
+git add . or filename
 git status
 git commit -m "added ansible notes"
-git push # it pops up for github login
+git config --global user.email "youremail" #it will ask only firsttime
+git config --global user.name "yourname" # or you can use git config --global --edit
+git push or git push origin master # it pops up for github login
 
 
 
 gitlog
+git log --onelinegit
+git shortlog 
+git log --stat
+git diff #compare commit id's
+
+git merge #for stable copy to master - git checkout master - git merge branch #data from branch merged to master branch
+
+git fetch #data kept in staging area
+git pull # git fetch + git merge
+git reset --hard commitid # reset to previous commit or ignore new commits
+git pull -b branchname # pull from specific branch
+
+git pull # make some changes on git and before making any changes locally download them and make some changes and upload it again to git.
 git branch -a
+git branch branchname
+git checkout branchname # data copied is here from the branch you are connected.
+
+Note:
+
+empty dir will not upload
+
+
+
+git config --global --edit
+
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+        name = KSP
+        email = sivaprasad.kammara@gmail.com
+~
+~
 
 
 -----------------------------------------------------------------------------------
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cd ../../
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData
+
 
 
 
@@ -253,5 +297,575 @@ $ git branch -a
 
 
 
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (master)
+$ mkdir git
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (master)
+$ cd git
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ pwd
+/c/Users/JK.JK-PC/Desktop/DevopsDesk/GitData/test/git
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ cp ../../
+ansible-Jan2019.txt  test/
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ cp ../../../
+DevInstallationLogs.txt            github.txt
+Devops-Desktop-Install-Tricks.txt  hello.yml
+GitData/
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ cp ../../../*.* .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ ls
+DevInstallationLogs.txt            github.txt
+Devops-Desktop-Install-Tricks.txt  hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        ./
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git add .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git commit -m "created git files"
+[master 9e9b2a8] created git files
+ 4 files changed, 622 insertions(+)
+ create mode 100644 git/DevInstallationLogs.txt
+ create mode 100644 git/Devops-Desktop-Install-Tricks.txt
+ create mode 100644 git/github.txt
+ create mode 100644 git/hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git log
+commit 9e9b2a80b060eb432295bfb39afb3ea823488586 (HEAD -> master)
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:45:02 2019 +0530
+
+    created git files
+
+commit fd78bedf93955f2ec01f9b1afbd19199fe6c40e7 (origin/master)
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:35:30 2019 +0530
+
+    added 3 new file notes
+
+commit 8eaa3373ac873e3d0e6a4d8099e7cc8dad524920
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:28:00 2019 +0530
+
+    added ansible notes
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git push origin master
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.96 KiB | 1001.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To https://github.com/ksphub/test.git
+   fd78bed..9e9b2a8  master -> master
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$
+
+
+
+$ git pull
+Already up to date.
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git pull
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From https://github.com/ksphub/test
+   9e9b2a8..357172a  master     -> origin/master
+Updating 9e9b2a8..357172a
+Fast-forward
+ git/DevInstallationLogs.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git add .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git commit -m "understanding pull"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git add .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   DevInstallationLogs.txt
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git commit -m "understanding pull"
+[master eab9d74] understanding pull
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$ git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 399 bytes | 399.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/ksphub/test.git
+   357172a..eab9d74  master -> master
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git (master)
+$
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (master)
+$ git branch test2
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (master)
+$ git branch -a
+* master
+  test2
+  remotes/origin/master
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (master)
+$ git checkout test2
+Switched to branch 'test2'
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$
+
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ git branch -a
+  master
+* test2
+  remotes/origin/master
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ mkdir git2
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ cd git2/
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cp ../../
+ansible-Jan2019.txt  test/
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cp ../../../
+DevInstallationLogs.txt            Devops-Desktop-Install-Tricks.txt  GitData/                           github.txt                         hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cp ../../../*.* .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ ls
+DevInstallationLogs.txt  Devops-Desktop-Install-Tricks.txt  github.txt  hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git status
+On branch test2
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        ./
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git add .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git status
+On branch test2
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   DevInstallationLogs.txt
+        new file:   Devops-Desktop-Install-Tricks.txt
+        new file:   github.txt
+        new file:   hello.yml
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git commit -m "Testing new branch"
+[test2 9996236] Testing new branch
+ 4 files changed, 875 insertions(+)
+ create mode 100644 git2/DevInstallationLogs.txt
+ create mode 100644 git2/Devops-Desktop-Install-Tricks.txt
+ create mode 100644 git2/github.txt
+ create mode 100644 git2/hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git status
+On branch test2
+nothing to commit, working tree clean
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git log
+commit 9996236f54f082388462a73cf6edc85de00deda7 (HEAD -> test2)
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 01:09:28 2019 +0530
+
+    Testing new branch
+
+commit eab9d7447814485509d1e69387782dcd340ed84f (origin/master, master)
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:59:52 2019 +0530
+
+    understanding pull
+
+commit 357172a5077e2043ab545762aa4dda952931d2d7
+Author: ksphub <31971823+ksphub@users.noreply.github.com>
+Date:   Sun Jan 6 00:56:18 2019 +0530
+
+    Update DevInstallationLogs.txt
+
+commit 9e9b2a80b060eb432295bfb39afb3ea823488586
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:45:02 2019 +0530
+
+    created git files
+
+commit fd78bedf93955f2ec01f9b1afbd19199fe6c40e7
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:35:30 2019 +0530
+
+    added 3 new file notes
+
+commit 8eaa3373ac873e3d0e6a4d8099e7cc8dad524920
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:28:00 2019 +0530
+
+    added ansible notes
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git push
+fatal: The current branch test2 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin test2
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git push origin test2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 3.56 KiB | 1.78 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'test2' on GitHub by visiting:
+remote:      https://github.com/ksphub/test/pull/new/test2
+remote:
+To https://github.com/ksphub/test.git
+ * [new branch]      test2 -> test2
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ git log --oneline
+9996236 (HEAD -> test2, origin/test2) Testing new branch
+eab9d74 (origin/master, master) understanding pull
+357172a Update DevInstallationLogs.txt
+9e9b2a8 created git files
+fd78bed added 3 new file notes
+8eaa337 added ansible notes
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ git shortlog
+KSP (5):
+      added ansible notes
+      added 3 new file notes
+      created git files
+      understanding pull
+      Testing new branch
+
+ksphub (1):
+      Update DevInstallationLogs.txt
+
+
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ git log --stat
+commit 9996236f54f082388462a73cf6edc85de00deda7 (HEAD -> test2, origin/test2)
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 01:09:28 2019 +0530
+
+    Testing new branch
+
+ git2/DevInstallationLogs.txt           | 286 ++++++++++++++++++
+ git2/Devops-Desktop-Install-Tricks.txt |  73 +++++
+ git2/github.txt                        | 510 +++++++++++++++++++++++++++++++++
+ git2/hello.yml                         |   6 +
+ 4 files changed, 875 insertions(+)
+
+commit eab9d7447814485509d1e69387782dcd340ed84f (origin/master, master)
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:59:52 2019 +0530
+
+    understanding pull
+
+ git/DevInstallationLogs.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 357172a5077e2043ab545762aa4dda952931d2d7
+Author: ksphub <31971823+ksphub@users.noreply.github.com>
+Date:   Sun Jan 6 00:56:18 2019 +0530
+
+    Update DevInstallationLogs.txt
+
+ git/DevInstallationLogs.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9e9b2a80b060eb432295bfb39afb3ea823488586
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:45:02 2019 +0530
+
+    created git files
+
+ git/DevInstallationLogs.txt           | 286 ++++++++++++++++++++++++++++++++++
+ git/Devops-Desktop-Install-Tricks.txt |  73 +++++++++
+ git/github.txt                        | 257 ++++++++++++++++++++++++++++++
+ git/hello.yml                         |   6 +
+ 4 files changed, 622 insertions(+)
+
+commit fd78bedf93955f2ec01f9b1afbd19199fe6c40e7
+Author: KSP <sivaprasad.kammara@gmail.com>
+Date:   Sun Jan 6 00:35:30 2019 +0530
+
+    added 3 new file notes
+
+ ansible/DevInstallationLogs.txt           | 286 ++++++++++++++++++++++++++++++
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+
+
+
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ ll
+total 12
+drwxr-xr-x 1 JK 197121 0 Jan  6 00:34 ansible/
+drwxr-xr-x 1 JK 197121 0 Jan  6 00:56 git/
+drwxr-xr-x 1 JK 197121 0 Jan  6 01:08 git2/
+drwxr-xr-x 1 JK 197121 0 Jan  6 00:54 pulltest/
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test (test2)
+$ cd git2/
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ ll
+total 33
+-rw-r--r-- 1 JK 197121 12159 Jan  6 01:08 DevInstallationLogs.txt
+-rw-r--r-- 1 JK 197121  2064 Jan  6 01:08 Devops-Desktop-Install-Tricks.txt
+-rw-r--r-- 1 JK 197121 15148 Jan  6 01:08 github.txt
+-rw-r--r-- 1 JK 197121    92 Jan  6 01:08 hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ rm -rf *
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ ls
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ touch text.123
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git add .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git commit
+Aborting commit due to empty commit message.
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git commit -m "cleaning"
+[test2 2f352af] cleaning
+ 5 files changed, 875 deletions(-)
+ delete mode 100644 git2/DevInstallationLogs.txt
+ delete mode 100644 git2/Devops-Desktop-Install-Tricks.txt
+ delete mode 100644 git2/github.txt
+ delete mode 100644 git2/hello.yml
+ create mode 100644 git2/text.123
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git status
+On branch test2
+nothing to commit, working tree clean
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git push
+fatal: The current branch test2 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin test2
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git push origin test2
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 300 bytes | 300.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ksphub/test.git
+   9996236..2f352af  test2 -> test2
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ rm -rf text.123
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cp ../../../
+DevInstallationLogs.txt            Devops-Desktop-Install-Tricks.txt  GitData/                           github.txt                         hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cp ../../../*.* .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ ll
+total 41
+-rw-r--r-- 1 JK 197121 12159 Jan  6 01:29 DevInstallationLogs.txt
+-rw-r--r-- 1 JK 197121  2064 Jan  6 01:29 Devops-Desktop-Install-Tricks.txt
+-rw-r--r-- 1 JK 197121 22089 Jan  6 01:29 github.txt
+-rw-r--r-- 1 JK 197121    92 Jan  6 01:29 hello.yml
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git add .
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git commit -m "git classes"
+[test2 96304f8] git classes
+ 5 files changed, 1097 insertions(+)
+ create mode 100644 git2/DevInstallationLogs.txt
+ create mode 100644 git2/Devops-Desktop-Install-Tricks.txt
+ create mode 100644 git2/github.txt
+ create mode 100644 git2/hello.yml
+ delete mode 100644 git2/text.123
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ git push origin test2
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 4.41 KiB | 2.21 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ksphub/test.git
+   2f352af..96304f8  test2 -> test2
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$
+
+
+
+
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData/test/git2 (test2)
+$ cd ../../
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
+JK@JK-PC MINGW64 ~/Desktop/DevopsDesk/GitData
+
+
 -----------------------------------------------------------------------------------
 
+$ git --help
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout    Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+
+-----------------------------------------------------------------------------------
