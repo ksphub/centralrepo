@@ -63,11 +63,4 @@ choco install xmind -y
 
 ----------------------------------------------------------------------------
 
-GitHUB:
-
-https://github.com/login
-sivaprasad.kammara@gmail.com ; ksp792github
-https://github.com/ksphub?tab=repositories
-https://github.com/ksphub
-
 ----------------------------------------------------------------------------
