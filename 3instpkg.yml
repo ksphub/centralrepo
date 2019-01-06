@@ -1,0 +1,31 @@
+---
+- name: Installing Packages
+  hosts: 172.31.37.142
+  become: yes
+  tasks:
+    - name: Installing Apache on Ubuntu
+      package: 
+        name: apache2,wget
+        state: present
+    - name: Controlling Service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+    - name: Download Template
+      command: wget -O web.zip https://www.tooplate.com/download/2104_sloopa
+#    - name: Copy Template
+#      unarchive: 
+#        src: web.zip
+#        dest: /var/www/html/
+#        remote_src: yes
+    - name: Unzip Template
+      command: unzip web.zip
+    - name: Copy Template
+      command: cp -r /home/ansible/2104_sloopa/. /var/www/html
+#    - name: Copy Template
+#      copy:
+#        src: 2014_sloopa/
+#        dest: /var/www/html/
+#        directory_mode: yes
+#        remote_src: yes
