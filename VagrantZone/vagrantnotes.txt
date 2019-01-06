@@ -1,0 +1,173 @@
+-----------------------------------------------------------------------
+Vagrant Notes
+-----------------------------------------------------------------------
+
+https://www.vagrantup.com/docs/providers/basic_usage.html
+https://app.vagrantup.com/boxes/search
+
+mkdir dirname
+
+vagrant init ubuntu/trusty64
+vagrant up
+vagrant list
+vagrant status
+vagrant ssh
+vagrant halt #shutdown
+vagrant reload
+vagrant reload --provision
+
+
+vagrant box list
+vagrant box add hashicorp/precise64
+vagrant up --provider=vmware_fusion
+
+
+https://github.com/QT-DevOps
+
+choco upgrade powershell --version 4.0.20141001 
+
+-----------------------------------------------------------------------
+
+PS C:\Users\JK.JK-PC> vagrant init ubuntu/trusty64
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+PS C:\Users\JK.JK-PC>
+
+
+
+PS C:\Users\JK.JK-PC\Desktop\DevopsDesk\VagrantDesk> vagrant up
+The version of powershell currently installed on this host is less than
+the required minimum version. Please upgrade the installed version of
+powershell to the minimum required version and run the command again.
+
+  Installed version: 2
+
+  Minimum required version: 3
+PS C:\Users\JK.JK-PC\Desktop\DevopsDesk\VagrantDesk>
+
+
+PS C:\Users\JK.JK-PC> get-host
+
+
+Name             : ConsoleHost
+Version          : 2.0
+InstanceId       : a3c38b9b-e2e0-405c-9ff9-5a22539d4b10
+UI               : System.Management.Automation.Internal.Host.InternalHostUserInterface
+CurrentCulture   : en-US
+CurrentUICulture : en-US
+PrivateData      : Microsoft.PowerShell.ConsoleHost+ConsoleColorProxy
+IsRunspacePushed : False
+Runspace         : System.Management.Automation.Runspaces.LocalRunspace
+
+
+
+PS C:\Users\JK.JK-PC>
+
+PS C:\Users\JK.JK-PC> Get-Host | Select-Object Version
+
+Version
+-------
+2.0
+
+
+PS C:\Users\JK.JK-PC>
+PS C:\Users\JK.JK-PC> Get-WmiObject -Class Win32_OperatingSystem | Format-Table Caption, ServicePackMajorVersion -AutoSi
+ze
+
+Caption                       ServicePackMajorVersion
+-------                       -----------------------
+Microsoft Windows 7 Ultimate                        1
+
+
+PS C:\Users\JK.JK-PC>
+
+PS C:\Users\JK.JK-PC> (Get-ItemProperty -Path 'HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Full' -ErrorAction Si
+lentlyContinue).Version -like '4.5*'
+True
+PS C:\Users\JK.JK-PC> $PSVersionTable
+
+Name                           Value
+----                           -----
+CLRVersion                     2.0.50727.8762
+BuildVersion                   6.1.7601.17514
+PSVersion                      2.0
+WSManStackVersion              2.0
+PSCompatibleVersions           {1.0, 2.0}
+SerializationVersion           1.1.0.1
+PSRemotingProtocolVersion      2.1
+
+
+PS C:\Users\JK.JK-PC>
+
+PS C:\Users\JK.JK-PC> get-host
+
+
+Name             : ConsoleHost
+Version          : 2.0
+InstanceId       : daeeddd5-4a0f-493c-8403-da8ba209394f
+UI               : System.Management.Automation.Internal.Host.InternalHostUserInterface
+CurrentCulture   : en-US
+CurrentUICulture : en-US
+PrivateData      : Microsoft.PowerShell.ConsoleHost+ConsoleColorProxy
+IsRunspacePushed : False
+Runspace         : System.Management.Automation.Runspaces.LocalRunspace
+
+
+
+PS C:\Users\JK.JK-PC> $PSVersionTable
+
+Name                           Value
+----                           -----
+CLRVersion                     2.0.50727.8762
+BuildVersion                   6.1.7601.17514
+PSVersion                      2.0
+WSManStackVersion              2.0
+PSCompatibleVersions           {1.0, 2.0}
+SerializationVersion           1.1.0.1
+PSRemotingProtocolVersion      2.1
+
+
+PS C:\Users\JK.JK-PC>
+
+
+PS C:\Users\JK.JK-PC> choco upgrade powershell
+Chocolatey v0.10.11
+Upgrading the following packages:
+powershell
+By upgrading you accept licenses for the packages.
+powershell is not installed. Installing...
+Progress: Downloading PowerShell 5.1.14409.20180811... 100%
+Progress: Downloading PowerShell 5.1.14409.20180811... 100%
+
+PowerShell v5.1.14409.20180811 [Approved]
+powershell package files upgrade completed. Performing other installation steps.
+The package PowerShell wants to run 'ChocolateyInstall.ps1'.
+Note: If you don't run this script, the installation will fail.
+Note: To confirm automatically next time, use '-y' or consider:
+choco feature enable -n allowGlobalConfirmation
+Do you want to run the script?([Y]es/[N]o/[P]rint): y
+
+Running on: Windows 7 Ultimate, (Ultimate), Windows Kernel: 6.1.7601
+Installing for OS: Win7 SP1/2008R2 SP1
+File appears to be downloaded already. Verifying with package checksum to determine if it needs to be redownloaded.
+Hashes match.
+Hashes match.
+Extracting C:\Users\JK.JK-PC\AppData\Local\Temp\chocolatey\PowerShell\5.1.14409.20180811\Win7AndW2K8R2-KB3191566-x64.zip
+ to C:\ProgramData\chocolatey\lib\PowerShell\tools...
+ERROR: 7-Zip signalled an unknown error (code -1073741819) This is most likely an issue with the 'PowerShell' package an
+d not with Chocolatey itself. Please follow up with the package maintainer(s) directly.
+The upgrade of powershell was NOT successful.
+Error while running 'C:\ProgramData\chocolatey\lib\PowerShell\tools\ChocolateyInstall.ps1'.
+ See log for details.
+
+Chocolatey upgraded 0/1 packages. 1 packages failed.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+
+Failures
+ - powershell (exited -1073741819) - Error while running 'C:\ProgramData\chocolatey\lib\PowerShell\tools\ChocolateyInsta
+ll.ps1'.
+ See log for details.
+PS C:\Users\JK.JK-PC>
+-----------------------------------------------------------------------
