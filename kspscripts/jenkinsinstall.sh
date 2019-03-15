@@ -8,3 +8,4 @@ sudo apt-get update  &&
 sudo apt-get install jenkins -y &&
 sudo apt-get install awscli -y &&
 echo "jenkins ALL=(ALL) NOPASSWD:ALL" | sudo tee --append  /etc/sudoers.d/90-cloud-init-users
+sudo apt-get install maven -y
