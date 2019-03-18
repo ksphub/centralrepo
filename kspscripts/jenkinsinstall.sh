@@ -13,4 +13,4 @@ sudo apt-get install maven -y
 #ls -al /etc/alternatives/java
 #sudo update-alternatives --config java
 #sudo sed -i -e "\$aJAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/bin/java" /etc/environment
-#sudo sed -ie '$aJAVA_HOME=/usr/lafib/jvm/java-1.8.0-openjdk-amd64/jre/bin/java' /etc/environment
+#sudo sed -ie '$aJAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/bin/java' /etc/environment
