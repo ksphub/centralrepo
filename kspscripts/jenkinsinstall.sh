@@ -10,6 +10,7 @@ sudo apt-get install jenkins -y &&
 sudo apt-get install awscli -y &&
 echo "jenkins ALL=(ALL) NOPASSWD:ALL" | sudo tee --append  /etc/sudoers.d/90-cloud-init-users
 sudo apt-get install maven -y
+sudo cp -p /etc/skel/.* /var/lib/jenkins/
 #ls -al /etc/alternatives/java
 #sudo update-alternatives --config java
 #sudo sed -i -e "\$aJAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/bin/java" /etc/environment
