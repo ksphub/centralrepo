@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo cp /tmp/apachefiles/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml && 
-sudo cp /tmp/apachefiles/manager-context.xml /opt/tomcat/webapps/manager/META-INF/context.xml && 
-sudo cp /tmp/apachefiles/host-manager-context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml && 
-sudo cp /tmp/apachefiles/tomcat.service /etc/systemd/system/tomcat.service && 
+sudo cp tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml && 
+sudo cp manager-context.xml /opt/tomcat/webapps/manager/META-INF/context.xml && 
+sudo cp host-manager-context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml && 
+sudo cp tomcat.service /etc/systemd/system/tomcat.service && 
 cd /opt/tomcat && 
 sudo chgrp -R tomcat /opt/tomcat && 
 sudo chmod -R g+r conf && 
