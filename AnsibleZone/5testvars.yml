@@ -1,0 +1,13 @@
+---
+- name: Testing Variables
+  hosts: all
+  become: yes
+  vars:
+#    testvar: "PlayVAR"
+  tasks:
+    - name: Check Variables
+      command: echo {{ testvar }}
+      register: dispvar
+      
+    - debug:
+        msg: "{{ dispvar.stdout }}"

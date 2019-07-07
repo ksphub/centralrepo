@@ -1,0 +1,124 @@
+------------------------------------------------------------------------------------------------------------------
+June 27, 2019
+
+working tree - (git add, git clean -fd .) - stagging/indexing area - (git commit) - local repo - (push/pull) - remote repo -  - stash
+
+yum install git
+
+git init
+.get is created... git remembers everything memory of git this is your repository...
+
+git help
+git add
+git commit -m "comments to localrepo"
+git status
+git log --decorate --oneline --graph
+
+------------------------------------------------------------------------------------------------------------------
+
+June 29, 2019
+
+
+** git-clean - Remove untracked files from the working tree
+** if you want to remove all the files which is not commited to repository use: / untracked files from git..
+
+git clean -fd . 
+git clean -f filename
+
+** use "git checkout -- <file>..." to discard changes in working directory
+
+git checkout -- file 
+
+** for only reverting from staging area to working tree.
+git reset HEAD file7
+
+** git reset --hard #Any changes to tracked files in the working tree since <commit> are discarded and new files in staging will be removed from staging and working tree but it will not take any action on untracked files.
+
+git reset --hard
+
+
+------------------------------------------------------------------------------------------------------------------
+https://github.com/
+
+git help config
+       When reading, the values are read from the system, global and repository local configuration files by default, and options
+       --system, --global, --local and --file <filename> can be used to tell the command to read from only that location (see the
+       section called “FILES”).
+
+cat ~/.gitconfig
+cat .git/config
+git config --list
+
+~/.gitconfig --global
+.git/config --local
+/etc/gitconfig --system
+git config --list  --file /tmp/fileconfig
+
+
+git config --global --edit
+git config --local --edit
+git config --system --edit 
+git config --edit  --file /tmp/fileconfig	
+
+git config --global user.email "sivaprasad.kammara@gmail.com"
+git config --global user.name "ksphub"
+
+git config --global --unset-all  user.name
+git config --global --unset-all  user.email
+git config --global --replace-all user.email "you@example.com"
+git config --global --replace-all user.name "Your Name"
+
+[root@ip-172-31-32-89 ksp4]# git config --local --list
+
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+
+[root@ip-172-31-32-89 ksp4]# git config --global --list
+
+user.email=sivaprasad.kammara@gmail.com
+user.name=ksphub
+[root@ip-172-31-32-89 ksp4]# git config --system --list
+fatal: unable to read config file '/etc/gitconfig': No such file or directory
+
+[root@ip-172-31-32-89 ksp4]# git config --list
+
+user.email=sivaprasad.kammara@gmail.com
+user.name=ksphub
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+
+[root@ip-172-31-32-89 ksp4]#
+
+
+git clone https://github.com/ksphub/centralrepo.git
+https://github.com/ksphub/centralrepo.git
+git push origin master
+
+git log --stat --summary
+git help tutorial
+git help add/status/config
+
+
+git remote -v
+git remote add origin https://github.com/ksphub/centralrepo.git
+git push -u origin master
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
