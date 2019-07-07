@@ -1,4 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------
+
 June 27, 2019
 
 working tree - (git add, git clean -fd .) - stagging/indexing area - (git commit) - local repo - (push/pull) - remote repo -  - stash
@@ -18,7 +19,6 @@ git log --decorate --oneline --graph
 
 June 29, 2019
 
-
 ** git-clean - Remove untracked files from the working tree
 ** if you want to remove all the files which is not commited to repository use: / untracked files from git..
 
@@ -36,8 +36,61 @@ git reset HEAD file7
 
 git reset --hard
 
+https://github.com/
+
+git clone https://github.com/ksphub/KSPDocs.git
+cd KSPDocs/GitZone
+vi AK-GITNotes
+git add AK-GITNotes
+git commit -m "Git Notes as on June 29 2019"
+git push origin master
+Username for 'https://github.com': sivaprasad.kammara@gmail.com
+Password for 'https://sivaprasad.kammara@gmail.com@github.com':
 
 ------------------------------------------------------------------------------------------------------------------
+
+July 07, 2019
+
+git remote add origin https://github.com/ksphub/KSPDocs.git
+create file push...
+git push origin master
+git pull origin master ; provide comments and save and exit or default... save exit...
+git push origin master
+
+git clone https://github.com/ksphub/centralrepo.git
+cd centralrepo
+create file push...
+git push origin master
+
+
+git remote vs git clone?
+
+------------------------------------------------------------------------------------------------------------------
+
+You need to commit at least one time on master before creating a new branch.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------
+
+Yet to Discuss:
+
+
 https://github.com/
 
 git help config
@@ -93,7 +146,6 @@ core.logallrefupdates=true
 
 [root@ip-172-31-32-89 ksp4]#
 
-
 git clone https://github.com/ksphub/centralrepo.git
 https://github.com/ksphub/centralrepo.git
 git push origin master
@@ -102,23 +154,20 @@ git log --stat --summary
 git help tutorial
 git help add/status/config
 
-
 git remote -v
 git remote add origin https://github.com/ksphub/centralrepo.git
 git push -u origin master
 
+https://github.com/ksphub/KSPDocs.git
+
+
 ------------------------------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
+------------------------------------------------------------------------------------------------------------------
 
