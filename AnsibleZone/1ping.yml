@@ -1,7 +1,0 @@
----
-- name: Playbook for Ping Test
-  hosts: all
-  become: yes
-  tasks:
-    - name: Ping Test
-      ping:
