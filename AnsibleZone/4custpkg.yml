@@ -1,0 +1,7 @@
+---
+- name: Installing Packages
+  hosts: 172.31.37.142
+  become: yes
+  tasks:
+    - name: Installing Apache on Ubuntu
+      shell: apt-get install unzip -y

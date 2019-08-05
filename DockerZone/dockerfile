@@ -1,0 +1,3 @@
+from alpine
+maintainer test@gmail.com
+entrypoint ["/bin/echo", "We are learning about Dockerfiles"]

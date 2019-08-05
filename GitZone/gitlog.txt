@@ -1,0 +1,577 @@
+------------------------------------------------------------------------------------------------
+GitLOG
+------------------------------------------------------------------------------------------------
+
+https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+https://help.github.com/articles/adding-a-file-to-a-repository-using-the-command-line/
+https://help.github.com/articles/creating-new-files/
+
+https://help.ubuntu.com/lts/serverguide/git.html.en
+
+ansible@ip-172-31-36-225:~$ sudo apt install git
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+git is already the newest version (1:2.7.4-0ubuntu1.6).
+0 upgraded, 0 newly installed, 0 to remove and 39 not upgraded.
+
+ansible@ip-172-31-36-225:~$ git --version
+git version 2.7.4
+ansible@ip-172-31-36-225:~$ git config --global user.email "sivaprasad.kammara@gmail.com"
+ansible@ip-172-31-36-225:~$ git config --global user.name "KSPHUB"
+ansible@ip-172-31-36-225:~$ git config --global edit
+error: key does not contain a section: edit
+ansible@ip-172-31-36-225:~$ git config --global --edit
+ansible@ip-172-31-36-225:~$
+ansible@ip-172-31-36-225:~$ mkdir KSPRepo
+ansible@ip-172-31-36-225:~$ cd KSPRepo/
+ansible@ip-172-31-36-225:~/KSPRepo$ git init
+Initialized empty Git repository in /home/ansible/KSPRepo/.git/
+ansible@ip-172-31-36-225:~/KSPRepo$
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ cp ../../*.yml .
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ ll
+total 32
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 02:37 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 02:36 ../
+-rw-r--r-- 1 ansible ansible  105 Jan  6 02:37 1ping.yml
+-rw-rw-r-- 1 ansible ansible  306 Jan  6 02:37 2useradd.yml
+-rw-rw-r-- 1 ansible ansible  823 Jan  6 02:37 3instpkg.yml
+-rw-rw-r-- 1 ansible ansible  156 Jan  6 02:37 4custpkg.yml
+-rw-rw-r-- 1 ansible ansible  240 Jan  6 02:37 5testvars.yml
+-rw-rw-r-- 1 ansible ansible  316 Jan  6 02:37 6handlers.yml
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        ./
+
+nothing added to commit but untracked files present (use "git add" to track)
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git add .
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   1ping.yml
+        new file:   2useradd.yml
+        new file:   3instpkg.yml
+        new file:   4custpkg.yml
+        new file:   5testvars.yml
+        new file:   6handlers.yml
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git commit -m "Ansible YML Files on Jan06 2019"
+[master (root-commit) bd99060] Ansible YML Files on Jan06 2019
+ 6 files changed, 90 insertions(+)
+ create mode 100644 AnsibleZone/1ping.yml
+ create mode 100644 AnsibleZone/2useradd.yml
+ create mode 100644 AnsibleZone/3instpkg.yml
+ create mode 100644 AnsibleZone/4custpkg.yml
+ create mode 100644 AnsibleZone/5testvars.yml
+ create mode 100644 AnsibleZone/6handlers.yml
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$
+
+
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git remote -v
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git remote add origin https://gi                                                                             thub.com/ksphub/repo.git
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git remote -v
+origin  https://github.com/ksphub/repo.git (fetch)
+origin  https://github.com/ksphub/repo.git (push)
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git status
+On branch master
+nothing to commit, working directory clean
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push origin master
+Username for 'https://github.com': sivaprasad.kammara@gmail.com
+Password for 'https://sivaprasad.kammara@gmail.com@github.com':
+remote: Repository not found.
+fatal: repository 'https://github.com/ksphub/repo.git/' not found
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$
+
+EXAMPLES
+       Start a new Git repository for an existing code base
+
+               $ cd /path/to/my/codebase
+               $ git init      (1)
+               $ git add .     (2)
+               $ git commit    (3)
+
+           1. Create a /path/to/my/codebase/.git directory.
+           2. Add all existing files to the index.
+           3. Record the pristine state as the first commit in the history.
+
+
+
+ansible@ip-172-31-36-225:~/KSPRepo$ cd AnsibleZone/
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ ll
+total 32
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 02:37 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 02:36 ../
+-rw-r--r-- 1 ansible ansible  105 Jan  6 02:37 1ping.yml
+-rw-rw-r-- 1 ansible ansible  306 Jan  6 02:37 2useradd.yml
+-rw-rw-r-- 1 ansible ansible  823 Jan  6 02:37 3instpkg.yml
+-rw-rw-r-- 1 ansible ansible  156 Jan  6 02:37 4custpkg.yml
+-rw-rw-r-- 1 ansible ansible  240 Jan  6 02:37 5testvars.yml
+-rw-rw-r-- 1 ansible ansible  316 Jan  6 02:37 6handlers.yml
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git init --bare .
+Initialized empty Git repository in /home/ansible/KSPRepo/AnsibleZone/
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ ll
+total 64
+drwxrwxr-x 7 ansible ansible 4096 Jan  6 02:49 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 02:36 ../
+-rw-r--r-- 1 ansible ansible  105 Jan  6 02:37 1ping.yml
+-rw-rw-r-- 1 ansible ansible  306 Jan  6 02:37 2useradd.yml
+-rw-rw-r-- 1 ansible ansible  823 Jan  6 02:37 3instpkg.yml
+-rw-rw-r-- 1 ansible ansible  156 Jan  6 02:37 4custpkg.yml
+-rw-rw-r-- 1 ansible ansible  240 Jan  6 02:37 5testvars.yml
+-rw-rw-r-- 1 ansible ansible  316 Jan  6 02:37 6handlers.yml
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 02:49 branches/
+-rw-rw-r-- 1 ansible ansible   66 Jan  6 02:49 config
+-rw-rw-r-- 1 ansible ansible   73 Jan  6 02:49 description
+-rw-rw-r-- 1 ansible ansible   23 Jan  6 02:49 HEAD
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 02:49 hooks/
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 02:49 info/
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 02:49 objects/
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 02:49 refs/
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git init --help
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git add .
+fatal: This operation must be run in a work tree
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git init
+Initialized empty Git repository in /home/ansible/KSPRepo/AnsibleZone/.git/
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git add .
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git commit -m "Ansible YML Files on Jan06 2019"
+[master (root-commit) ee6ee0c] Ansible YML Files on Jan06 2019
+ 19 files changed, 598 insertions(+)
+ create mode 100644 1ping.yml
+ create mode 100644 2useradd.yml
+ create mode 100644 3instpkg.yml
+ create mode 100644 4custpkg.yml
+ create mode 100644 5testvars.yml
+ create mode 100644 6handlers.yml
+ create mode 100644 HEAD
+ create mode 100644 config
+ create mode 100644 description
+ create mode 100755 hooks/applypatch-msg.sample
+ create mode 100755 hooks/commit-msg.sample
+ create mode 100755 hooks/post-update.sample
+ create mode 100755 hooks/pre-applypatch.sample
+ create mode 100755 hooks/pre-commit.sample
+ create mode 100755 hooks/pre-push.sample
+ create mode 100755 hooks/pre-rebase.sample
+ create mode 100755 hooks/prepare-commit-msg.sample
+ create mode 100755 hooks/update.sample
+ create mode 100644 info/exclude
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git remote add KSPDocs https://github.com/ksphub
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push KSPDocs
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream KSPDocs master
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push KSPDocs master
+remote: Not Found
+fatal: repository 'https://github.com/ksphub/' not found
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git remote add AnsibleZone https://github.com/ksphub/KSPDocs
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git remote -v
+AnsibleZone     https://github.com/ksphub/KSPDocs (fetch)
+AnsibleZone     https://github.com/ksphub/KSPDocs (push)
+KSPDocs https://github.com/ksphub (fetch)
+KSPDocs https://github.com/ksphub (push)
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push AnsibleZone
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream AnsibleZone master
+
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$ git push AnsibleZone master
+Username for 'https://github.com': sivaprasad.kammara@gmail.com
+Password for 'https://sivaprasad.kammara@gmail.com@github.com':
+Counting objects: 23, done.
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (23/23), 8.70 KiB | 0 bytes/s, done.
+Total 23 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/ksphub/KSPDocs
+ * [new branch]      master -> master
+ansible@ip-172-31-36-225:~/KSPRepo/AnsibleZone$
+
+
+
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 02:44 .git/
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote -v
+origin  https://github.com/ksphub/repo.git (fetch)
+origin  https://github.com/ksphub/repo.git (push)
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote --help
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote remove origin
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote --help
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote -v
+ansible@ip-172-31-36-225:~/KSPRepo$
+
+ansible@ip-172-31-36-225:~/KSPRepo$ ll
+total 16
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 02:36 ./
+drwxr-xr-x 7 ansible ansible 4096 Jan  6 02:35 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:02 AnsibleZone/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:03 .git/
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote add kspdocs https://github.com/ksphub/KSPDocs
+ansible@ip-172-31-36-225:~/KSPRepo$ git remote -v
+kspdocs https://github.com/ksphub/KSPDocs (fetch)
+kspdocs https://github.com/ksphub/KSPDocs (push)
+ansible@ip-172-31-36-225:~/KSPRepo$
+
+
+ansible@ip-172-31-36-225:~/KSPRepo$ git clone https://github.com/ksphub/KSPDocs.git
+Cloning into 'KSPDocs'...
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 30 (delta 1), reused 26 (delta 1), pack-reused 0
+Unpacking objects: 100% (30/30), done.
+Checking connectivity... done.
+ansible@ip-172-31-36-225:~/KSPRepo$ ll
+total 16
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ./
+drwxr-xr-x 7 ansible ansible 4096 Jan  6 02:35 ../
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:08 .git/
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 KSPDocs/
+ansible@ip-172-31-36-225:~/KSPRepo$ cd KSPDocs/AnsibleZone/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ ll
+total 12
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:18 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ../
+-rw-rw-r-- 1 ansible ansible    1 Jan  6 03:18 textrepo.123
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ rm textrepo.123
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ cp ../../../
+1ping.yml      4custpkg.yml   .ansible/      .bashrc        .gitconfig     KSPRepo/       .profile       text123
+2useradd.yml   5testvars.yml  .bash_history  connectnode1   index.html     myinv          .ssh/          .viminfo
+3instpkg.yml   6handlers.yml  .bash_logout   connectnode2   int-dev        .nano/         test/          web.zip
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ cp ../../../*.yml .
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ ll
+total 32
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:19 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ../
+-rw-r--r-- 1 ansible ansible  105 Jan  6 03:19 1ping.yml
+-rw-rw-r-- 1 ansible ansible  306 Jan  6 03:19 2useradd.yml
+-rw-rw-r-- 1 ansible ansible  823 Jan  6 03:19 3instpkg.yml
+-rw-rw-r-- 1 ansible ansible  156 Jan  6 03:19 4custpkg.yml
+-rw-rw-r-- 1 ansible ansible  240 Jan  6 03:19 5testvars.yml
+-rw-rw-r-- 1 ansible ansible  316 Jan  6 03:19 6handlers.yml
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ git add .
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   1ping.yml
+        new file:   2useradd.yml
+        new file:   3instpkg.yml
+        new file:   4custpkg.yml
+        new file:   5testvars.yml
+        new file:   6handlers.yml
+        deleted:    textrepo.123
+
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ git commit -m "Adding YML files on Jan06 2019"
+[master 39aae3e] Adding YML files on Jan06 2019
+ 7 files changed, 90 insertions(+), 1 deletion(-)
+ create mode 100644 AnsibleZone/1ping.yml
+ create mode 100644 AnsibleZone/2useradd.yml
+ create mode 100644 AnsibleZone/3instpkg.yml
+ create mode 100644 AnsibleZone/4custpkg.yml
+ create mode 100644 AnsibleZone/5testvars.yml
+ create mode 100644 AnsibleZone/6handlers.yml
+ delete mode 100644 AnsibleZone/textrepo.123
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ git push
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': sivaprasad.kammara@gmail.com
+Password for 'https://sivaprasad.kammara@gmail.com@github.com':
+Counting objects: 9, done.
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 1.58 KiB | 0 bytes/s, done.
+Total 9 (delta 0), reused 0 (delta 0)
+To https://github.com/ksphub/KSPDocs.git
+   db07945..39aae3e  master -> master
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/AnsibleZone$ cd ..
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ ll
+total 16
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:19 AnsibleZone/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:20 .git/
+-rw-rw-r-- 1 ansible ansible    0 Jan  6 03:18 text.123
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ rm text.123
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git add .
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git commit "Cleanning Jan06 2019"
+error: pathspec 'Cleanning Jan06 2019' did not match any file(s) known to git.
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git commit -m "Cleanning Jan06 2019"
+[master 44d268e] Cleanning Jan06 2019
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 text.123
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git push
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': sivaprasad.kammara@gmail.com
+Password for 'https://sivaprasad.kammara@gmail.com@github.com':
+Counting objects: 2, done.
+Compressing objects: 100% (1/1), done.
+Writing objects: 100% (2/2), 247 bytes | 0 bytes/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To https://github.com/ksphub/KSPDocs.git
+   39aae3e..44d268e  master -> master
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ ll
+total 16
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:22 ./
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:19 AnsibleZone/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:22 .git/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ cd ..
+ansible@ip-172-31-36-225:~/KSPRepo$ ll
+total 16
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:18 ./
+drwxr-xr-x 7 ansible ansible 4096 Jan  6 02:35 ../
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:08 .git/
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:22 KSPDocs/
+ansible@ip-172-31-36-225:~/KSPRepo$ pwd
+/home/ansible/KSPRepo
+ansible@ip-172-31-36-225:~/KSPRepo$ git clong https://github.com/ksphub/test.git
+git: 'clong' is not a git command. See 'git --help'.
+
+Did you mean this?
+        clone
+ansible@ip-172-31-36-225:~/KSPRepo$ git clone https://github.com/ksphub/test.git
+Cloning into 'test'...
+remote: Enumerating objects: 38, done.
+remote: Counting objects: 100% (38/38), done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 38 (delta 13), reused 24 (delta 3), pack-reused 0
+Unpacking objects: 100% (38/38), done.
+Checking connectivity... done.
+ansible@ip-172-31-36-225:~/KSPRepo$ ll
+total 20
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ./
+drwxr-xr-x 7 ansible ansible 4096 Jan  6 02:35 ../
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:08 .git/
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:22 KSPDocs/
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 test/
+ansible@ip-172-31-36-225:~/KSPRepo$ cd test/
+ansible@ip-172-31-36-225:~/KSPRepo/test$ ll
+total 20
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ./
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:24 ansible/
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:24 git/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:24 .git/
+ansible@ip-172-31-36-225:~/KSPRepo/test$ cd ../KSPDocs/ll
+-su: cd: ../KSPDocs/ll: No such file or directory
+ansible@ip-172-31-36-225:~/KSPRepo/test$ ll
+total 20
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ./
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:24 ansible/
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:24 git/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:24 .git/
+ansible@ip-172-31-36-225:~/KSPRepo/test$ cd ../KSPDocs/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ ll
+total 16
+drwxrwxr-x 4 ansible ansible 4096 Jan  6 03:22 ./
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:19 AnsibleZone/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:22 .git/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ mkdir GitZone
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ cd GitZone/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ ll
+total 8
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:25 ./
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:25 ../
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ cp ../../test/
+ansible/ git/     .git/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ cp ../../test/git/
+DevInstallationLogs.txt            Devops-Desktop-Install-Tricks.txt  github.txt                         hello.yml
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ cp ../../test/git/*.* .
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ ll
+total 36
+drwxrwxr-x 2 ansible ansible  4096 Jan  6 03:26 ./
+drwxrwxr-x 5 ansible ansible  4096 Jan  6 03:25 ../
+-rw-rw-r-- 1 ansible ansible 11908 Jan  6 03:26 DevInstallationLogs.txt
+-rw-rw-r-- 1 ansible ansible  1992 Jan  6 03:26 Devops-Desktop-Install-Tricks.txt
+-rw-rw-r-- 1 ansible ansible  6631 Jan  6 03:26 github.txt
+-rw-rw-r-- 1 ansible ansible    87 Jan  6 03:26 hello.yml
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ rm hello.yml
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ ll
+total 32
+drwxrwxr-x 2 ansible ansible  4096 Jan  6 03:26 ./
+drwxrwxr-x 5 ansible ansible  4096 Jan  6 03:25 ../
+-rw-rw-r-- 1 ansible ansible 11908 Jan  6 03:26 DevInstallationLogs.txt
+-rw-rw-r-- 1 ansible ansible  1992 Jan  6 03:26 Devops-Desktop-Install-Tricks.txt
+-rw-rw-r-- 1 ansible ansible  6631 Jan  6 03:26 github.txt
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs/GitZone$ cd ..
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ ll
+total 20
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:25 ./
+drwxrwxr-x 5 ansible ansible 4096 Jan  6 03:24 ../
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:19 AnsibleZone/
+drwxrwxr-x 8 ansible ansible 4096 Jan  6 03:22 .git/
+drwxrwxr-x 2 ansible ansible 4096 Jan  6 03:26 GitZone/
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git add GitZone/*
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   GitZone/DevInstallationLogs.txt
+        new file:   GitZone/Devops-Desktop-Install-Tricks.txt
+        new file:   GitZone/github.txt
+
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git commit -m "Adding GitZone on Jan06 2019"
+[master abba930] Adding GitZone on Jan06 2019
+ 3 files changed, 618 insertions(+)
+ create mode 100644 GitZone/DevInstallationLogs.txt
+ create mode 100644 GitZone/Devops-Desktop-Install-Tricks.txt
+ create mode 100644 GitZone/github.txt
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git push
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': sivaprasad.kammara@gmail.com
+Password for 'https://sivaprasad.kammara@gmail.com@github.com':
+Counting objects: 6, done.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 5.76 KiB | 0 bytes/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/ksphub/KSPDocs.git
+   44d268e..abba930  master -> master
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$ git remote -v
+origin  https://github.com/ksphub/KSPDocs.git (fetch)
+origin  https://github.com/ksphub/KSPDocs.git (push)
+ansible@ip-172-31-36-225:~/KSPRepo/KSPDocs$
+
+------------------------------------------------------------------------------------------------

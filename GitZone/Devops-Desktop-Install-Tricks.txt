@@ -1,0 +1,66 @@
+----------------------------------------------------------------------------
+
+Installing Devtools in Windows 7
+
+----------------------------------------------------------------------------
+
+PowerShell
+
+rightclick to copy
+start . #to open windows explorer
+code #to open Visual studio code
+Restart-Computer
+
+----------------------------------------------------------------------------
+
+chocolatey:
+
+https://chocolatey.org/docs/installation
+
+Copy the text specific to your command shell - cmd.exe or powershell.exe.
+
+open cmd as administrator
+
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+Open powershell in admin mode then check choco --version
+
+C:\ProgramData\chocolatey\logs\chocolatey.log
+
+----------------------------------------------------------------------------
+
+VisualStudioCode:
+
+https://chocolatey.org/packages/VisualStudioCode
+choco install visualstudiocode -y
+Restart-Computer
+
+
+https://code.visualstudio.com/docs?start=true
+
+install relavent plugins and reload it
+----------------------------------------------------------------------------
+
+vagrant:
+
+https://chocolatey.org/packages/vagrant
+choco install vagrant -y
+Restart-Computer
+
+----------------------------------------------------------------------------
+
+Git BASH:
+
+https://chocolatey.org/packages/git.install
+choco install git.install -y
+
+----------------------------------------------------------------------------
+
+XMind:
+
+https://chocolatey.org/packages?q=xmind
+choco install xmind -y
+
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
